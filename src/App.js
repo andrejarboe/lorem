@@ -8,7 +8,6 @@ function App() {
 	const handleSubmit = (e) => {
     e.preventDefault();
     
-    
 		//original count is a string
 		let amount = parseInt(count);
     
@@ -33,7 +32,7 @@ function App() {
 
 	return (
 		<section className="section-center">
-			<h3>Tired of boring lorem ipum?</h3>
+			<h3>Tired of boring lorem ipsum?</h3>
 			<form className="lorem-form" onSubmit={handleSubmit}>
 				<label htmlFor="amount">paragraphs:</label>
 				<input
