@@ -3,10 +3,32 @@ import data from './data';
 function App() {
 	const [count, setCount] = useState(0);
 	const [text, setText] = useState([]);
+	const [isError, setError] = useState(false);
 
 	const handleSubmit = (e) => {
-		e.preventDefault();
-		console.log('hello');
+    e.preventDefault();
+    
+    
+		//original count is a string
+		let amount = parseInt(count);
+    
+		if (count <= 0) {
+      amount = 1;
+    }
+
+    if (count > 8) {
+      amount = 8;
+    }
+
+    // check error 
+    if (count > 8) {
+      setError(true);
+    } else { 
+      setError(false);
+    }
+    
+
+		setText(data.slice(0, amount));
 	};
 
 	return (
@@ -25,27 +47,13 @@ function App() {
 					generate
 				</button>
 			</form>
+			<h4 className={`error ${isError ? null : 'error-hide'} `}>max is 8</h4>
 
-				<article className="lorem-text">
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis velit
-						voluptate laborum, sint veniam et aliquid doloremque dolor nisi,
-						debitis sed eaque laudantium ad labore obcaecati, numquam culpa illo
-						praesentium?
-					</p>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis velit
-						voluptate laborum, sint veniam et aliquid doloremque dolor nisi,
-						debitis sed eaque laudantium ad labore obcaecati, numquam culpa illo
-						praesentium?
-					</p>
-        <p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis velit
-						voluptate laborum, sint veniam et aliquid doloremque dolor nisi,
-						debitis sed eaque laudantium ad labore obcaecati, numquam culpa illo
-						praesentium?
-					</p>
-				</article>
+			<article className="lorem-text">
+				{text.map((item, index) => {
+					return <p key={index}>{item}</p>;
+				})}
+			</article>
 		</section>
 	);
 }

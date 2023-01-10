@@ -175,11 +175,20 @@ h3 {
   text-transform: capitalize;
   letter-spacing: var(--spacing);
   margin-top: 2rem;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.error{
+  color: #ef4444;
+}
+
+.error-hide{
+  display: none;
+}
+
+
 label {
   font-size: 1.25rem;
   color: var(--clr-primary-1);
